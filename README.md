@@ -120,25 +120,25 @@ Generate the example template and see the output that will be sent to the direct
 ```shell
 ferreiro --template ./ --outDir ./build-gen --env .env-gen --overwriteFile true
 ```
-
+```
     Loaded 93 tables of db TEST
     Loaded undefined config file
     Loaded 0 script file(s)
     Find 1 file(s) in /home/user/new-example template.
     Generated 93 file(s) in /new-example/build-gen.
-	
+```
 The command will generate the files based on your database, inside the build-gen folder.
 
 #### Create file containing the name of the tables and their fields
 Create another example ./example02/index.hbs containing:
-
+```
     #begin_file
     {{fileName 'lists.txt'}}
     {{#each this.tableData}}
     {{this.tablename}}
      Fields: {{#each this.fields}}{{this.name}},{{/each}}
     {{/each}}
-
+```
 ```shell
 ferreiro --template ./ --outDir ./build-gen --env .env-gen --overwriteFile true
 ```
@@ -170,7 +170,7 @@ containing:
 
 create file ./example03/index.hbs
 containing:
-
+```
     #begin_file
     {{fileName 'test-extra.txt'}}
     Extra string: {{this.data.extra-str}}
@@ -184,7 +184,7 @@ containing:
     {{#each this.data.extra-array}}
     name: {{this.name}}
     {{/each}}
-
+```
 
 ```shell
 ferreiro --template ./ --outDir ./build-gen --env .env-gen --overwriteFile true
@@ -210,6 +210,7 @@ module.exports = (Handlebars) => {
 ```
 
 Create hbs file ./example04/index.js containing:
+```
     #begin_file
     {{fileName 'test-helper.txt'}}
     Sum 1: {{sum 40 20}}
@@ -218,9 +219,11 @@ Create hbs file ./example04/index.js containing:
     Name: {{concat 'Ferreiro' '-v1'}}
     
     by {{autor}}
+	
+	```
 
 after template build:
-
+```
     Sum 1: 60
     Sum 2: 30
     
@@ -229,11 +232,7 @@ after template build:
     by Ferreiro
     
 
+
+```
 See more about helpers at [Handlebars Helpers](https://handlebarsjs.com/guide/#custom-helpers "Handlebars Helpers")
-
-
-
-
-
-
 
