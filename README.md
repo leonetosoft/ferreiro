@@ -247,3 +247,64 @@ after template build:
 ```
 See more about helpers at [Handlebars Helpers](https://handlebarsjs.com/guide/#custom-helpers "Handlebars Helpers")
 
+### Default helpers
+#### upper [string]
+upper case of text
+#### lower [string]
+lower case of text
+#### exists [val]
+
+    return true if val !== undefined && val !== null
+
+#### raw-helper
+use to template contains {{
+see:
+
+    {{{{raw-helper}}}} 
+    {{goku!}}
+    {{{{/raw-helper}}}}
+
+build to
+
+    {{goku!}}
+#### keys [obs]
+return Object.keys(obj)
+
+#### camelcase [string] [boolean pascalCase  (default true)]
+camelcase lib see: [Camelcase](https://www.npmjs.com/package/camelcase)
+
+#### date
+
+    return new Date();
+
+#### negate [arg]
+
+    return !arg;
+
+#### ifequal [comp1] [comp2]
+
+    return comp1 === comp2;
+#### arrayContainString [arr] [value]
+
+    return  arr.findIndex(el  =>  el === value) !== -1;
+
+#### fileName [...args]
+set a file name ... 
+
+#### set [name] [value]
+create template variable
+
+example:
+
+    #begin_file
+    {{fileName 'test.txt'}}
+    {{set 'age' '26'}}
+    {{set 'name' 'Leonardo'}}
+    Name: {{get 'name'}}
+    Age: {{get 'age'}}
+
+build to:
+
+    Name: Leonardo
+    Age: 26
+
