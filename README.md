@@ -308,3 +308,13 @@ build to:
     Name: Leonardo
     Age: 26
 
+### Special Thank's
+ - [TypeGraphql](https://typegraphql.com/)
+ - [RobinBuschmann/sequelize-typescript](https://github.com/RobinBuschmann/sequelize-typescript)
+ - [SequelizeAuto](https://github.com/sequelize/sequelize-auto)
+ - [Sequelize](https://sequelize.org/)
+ - [Commander](https://www.npmjs.com/package/commander)
+ - [dotenv](https://www.npmjs.com/package/dotenv)
+ - [handlebars](https://www.npmjs.com/package/handlebars)
+ - [lodash](https://lodash.com/)
+ - [mkdirp](https://www.npmjs.com/package/mkdirp)
