@@ -220,7 +220,7 @@ Create hbs file ./example04/index.js containing:
     
     by {{autor}}
 	
-	```
+```
 
 after template build:
 ```
@@ -231,8 +231,6 @@ after template build:
     
     by Ferreiro
     
-
-
 ```
 See more about helpers at [Handlebars Helpers](https://handlebarsjs.com/guide/#custom-helpers "Handlebars Helpers")
 
