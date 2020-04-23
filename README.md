@@ -8,8 +8,8 @@ Through a relational database you can automatically generate the development fil
 - Sql's
 - Anything you want
 
-[Get Started](https://pandao.github.io/editor.md/en.html#Get%20Started)
--   [Install](https://pandao.github.io/editor.md/en.html#Install)
+[Get Started](#Get%20Started)
+-   [Install](#Install)
 -   [Set up the environment](https://pandao.github.io/editor.md/en.html#Set%20up%20the%20environment)
 -   [Generate the first codes](https://pandao.github.io/editor.md/en.html#Generate%20the%20first%20codes)
     -   [Examples](https://pandao.github.io/editor.md/en.html#Examples)
