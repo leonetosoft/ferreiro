@@ -12,7 +12,7 @@ Through a relational database you can automatically generate the development fil
 -   [Set up the environment](#Set%20up%20the%20environment)
 -   [Generate the first codes](#Generate%20the%20first%20codes)
     -   [Examples](#Examples)
-        -   [Create table named files containing information about them](#Get Started)
+        -   [Create table named files containing information about them](#Create%20table%20named%20files%20containing%20information%20about%20them)
         -   [Create file containing the name of the tables and their fields](#Create%20file%20containing%20the%20name%20of%20the%20tables%20and%20their%20fields)
         -   [Sending extra information to the template:](#Sending%20extra%20information%20to%20the%20template)
         -   [Create first javascript helper](#Create%20first%20javascript%20helper)
