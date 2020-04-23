@@ -1,0 +1,13 @@
+#begin_file
+{{fileName 'test-extra.txt'}}
+Extra string: {{this.data.extra-str}}
+
+Extra obj:
+ name: {{this.data.extra-obj.name}}
+ age: {{this.data.extra-obj.age}}
+
+ 
+Extra array:
+{{#each this.data.extra-array}}
+name: {{this.name}}
+{{/each}}

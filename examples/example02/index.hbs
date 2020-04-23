@@ -1,0 +1,6 @@
+#begin_file
+{{fileName 'lists.txt'}}
+{{#each this.tableData}}
+{{this.tablename}}
+ Fields: {{#each this.fields}}{{this.name}},{{/each}}
+{{/each}}

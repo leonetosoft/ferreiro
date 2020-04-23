@@ -1,0 +1,80 @@
+{
+  "name": "ferreiro",
+  "version": "1.0.3",
+  "description": "Generate your codes from a postgres or mysql database",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run clean && tsc && tsc -m es6 --outDir lib-esm && webpack --watch --config webpack.config.js --progress --colors",
+    "lib": "npm run clean && tsc && tsc -m es6 --outDir lib-esm",
+    "test": "mocha -r ts-node/register tests/**/*.test.ts",
+    "clean": "shx rm -rf _bundles lib lib-esm",
+    "test:pg:showTables": "mocha -r ts-node/register src/tests/show.tables.test.ts --.env.pg",
+    "test:mysql:showTables": "mocha -r ts-node/register src/tests/show.tables.test.ts --.env.mysql",
+    "test:pg:maptable": "mocha -r ts-node/register src/tests/show.maptable.test.ts --.env.pg",
+    "test:mysql:maptable": "mocha -r ts-node/register src/tests/show.maptable.test.ts --.env.mysql",
+    "test:pg:compile": "mocha -r ts-node/register src/tests/build.compile.test.ts --.env.pg",
+    "test:mysql:compile": "mocha -r ts-node/register src/tests/build.compile.test.ts --.env.mysql"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leonetosoft/ferreiro.git"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "keywords": [
+    "builder-code",
+    "codegenerator",
+    "generate",
+    "code",
+    "generate",
+    "default",
+    "code",
+    "generate",
+    "by",
+    "database",
+    "generator",
+    "builder",
+    "code",
+    "code",
+    "design"
+  ],
+  "author": "Leonardo Neto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leonetosoft/ferreiro/issues"
+  },
+  "bin": {
+    "@leonetosoft/create-project": "bin/ferreiro",
+    "ferreiro": "bin/ferreiro"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "homepage": "https://github.com/leonetosoft/ferreiro#readme",
+  "dependencies": {
+    "camelcase": "^6.0.0",
+    "commander": "^4.1.1",
+    "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
+    "handlebars": "^4.7.6",
+    "lodash": "^4.17.15",
+    "mkdirp": "^1.0.4",
+    "sequelize": "^5.21.6"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.11",
+    "@types/lodash": "^4.14.149",
+    "@types/mocha": "^7.0.2",
+    "@types/node": "^13.13.1",
+    "chai": "^4.2.0",
+    "mocha": "^7.1.1",
+    "mysql2": "^2.1.0",
+    "pg": "^8.0.0",
+    "pg-hstore": "^2.3.3",
+    "shx": "^0.3.2",
+    "sqlite3": "^4.1.1",
+    "ts-node": "^8.8.1",
+    "typescript": "^3.8.3"
+  }
+}

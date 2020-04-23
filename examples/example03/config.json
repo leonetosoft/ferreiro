@@ -1,0 +1,14 @@
+{
+	"data": {
+		"extra-str": "Hello extra info",
+		"extra-obj": {
+			"name": "Leonardo",
+			"age": "26"
+		},
+		"extra-array": [{
+			"name": "Teste"
+		}, {
+			"name": "Teste2"
+		}]
+	}
+}

@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+      "moduleResolution": "node",
+      "module": "commonjs",
+      "target": "es2017",
+      "lib": [ "es5", "es6" ],
+      "outDir": "lib",
+      "allowSyntheticDefaultImports": true,
+      "suppressImplicitAnyIndexErrors": true,
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "forceConsistentCasingInFileNames": true,
+      "sourceMap": true,
+      "declaration": true,
+      "jsx": "react"
+    },
+    "node": {
+      "fs": "empty",
+      "fsevents": "empty"
+    },
+    "include": [
+      "src/**/*"
+  ],
+    "files": [
+      "./src/index.ts"
+    ],
+    "compileOnSave": false,
+    "buildOnSave": false
+  }

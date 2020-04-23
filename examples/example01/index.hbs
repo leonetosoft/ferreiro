@@ -1,0 +1,35 @@
+{{#each this.tableData}}
+#begin_file
+{{fileName '' (camelcase this.tablename true) '.txt'}}
+Name of table {{this.tablename}}
+
+Fields: 
+{{#each this.fields}}
+Name: {{this.name}}
+    type: {{this.type}}
+    allowNull: {{this.allowNull}}
+    defaultValue: {{this.defaultValue}}
+    comment: {{this.comment}}
+    primaryKey: {{this.primaryKey}}
+    isIdentity: {{this.isIdentity}}
+    identity: {{this.identity}}
+    isPrimaryKey: {{this.isPrimaryKey}}
+    isUniqueKey: {{this.isUniqueKey}}
+    isSerialKey: {{this.isSerialKey}} (only pg)
+
+    isForeignKey: {{this.isForeignKey}}
+    {{#if this.isForeignKey}}
+    Fk Information:
+        constraint_name: {{this.foreignKey.constraint_name}}
+        source_schema: {{this.foreignKey.source_schema}}
+        source_table: {{this.foreignKey.source_table}}
+        source_column: {{this.foreignKey.source_column}}
+        target_schema: {{this.foreignKey.target_schema}}
+        target_table: {{this.foreignKey.target_table}}
+        target_column: {{this.foreignKey.target_column}}
+        contype: {{this.foreignKey.contype}}
+        extra: {{this.foreignKey.extra}}
+    {{/if}}
+---------------------
+{{/each}}
+{{/each}}

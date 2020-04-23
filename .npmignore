@@ -1,0 +1,10 @@
+.*
+**/tsconfig.json
+**/webpack.config.js
+node_modules
+src
+build-gent
+lib-esm
+.env.pg
+.env.mysql
+templates
