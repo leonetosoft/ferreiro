@@ -10,16 +10,16 @@ Through a relational database you can automatically generate the development fil
 
 [Get Started](#Get%20Started)
 -   [Install](#Install)
--   [Set up the environment](https://pandao.github.io/editor.md/en.html#Set%20up%20the%20environment)
--   [Generate the first codes](https://pandao.github.io/editor.md/en.html#Generate%20the%20first%20codes)
-    -   [Examples](https://pandao.github.io/editor.md/en.html#Examples)
-        -   [Create table named files containing information about them](https://pandao.github.io/editor.md/en.html#Create%20table%20named%20files%20containing%20information%20about%20them)
-        -   [Create file containing the name of the tables and their fields](https://pandao.github.io/editor.md/en.html#Create%20file%20containing%20the%20name%20of%20the%20tables%20and%20their%20fields)
-        -   [Sending extra information to the template:](https://pandao.github.io/editor.md/en.html#Sending%20extra%20information%20to%20the%20template:)
-        -   [Create first javascript helper](https://pandao.github.io/editor.md/en.html#Create%20first%20javascript%20helper)
+-   [Set up the environment](#Set%20up%20the%20environment)
+-   [Generate the first codes](#Generate%20the%20first%20codes)
+    -   [Examples](#Examples)
+        -   [Create table named files containing information about them](#Create%20table%20named%20files%20containing%20information%20about%20them)
+        -   [Create file containing the name of the tables and their fields](#Create%20file%20containing%20the%20name%20of%20the%20tables%20and%20their%20fields)
+        -   [Sending extra information to the template:](#Sending%20extra%20information%20to%20the%20template)
+        -   [Create first javascript helper](#Create%20first%20javascript%20helper)
 
 # Get Started
-##Install
+## Install
 [Node Js ](https://nodejs.org/ "NodeJs ")v10 or higher installation required
 
 Globally install the package:
@@ -152,7 +152,7 @@ Create another example ./example02/index.hbs containing:
 ferreiro --template ./ --outDir ./build-gen --env .env-gen --overwriteFile true
 ```
 
-#### Sending extra information to the template:
+#### Sending extra information to the template
 
 To send extra information you need to create a .json file from the root of the template, see the example:
 
