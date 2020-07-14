@@ -3,7 +3,7 @@
 **/webpack.config.js
 node_modules
 src
-build-gent
+build-gen
 lib-esm
 .env.pg
 .env.mysql

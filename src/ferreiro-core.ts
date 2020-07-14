@@ -208,14 +208,15 @@ export class FerreiroCore {
                 const findTab = tableInfos.find(el => el.tablename === table);
                 const fkField = tableInf.filter(el => el.source_column === field);
 
+                //writeFileSync(`testee/test_${table}_${field}.json`, JSON.stringify(fkField));
                 let fieldItem: TableField = {
                     ...tableDescrible[field],
                     name: field,
-                    isForeignKey: this.queryInterface.isForeignKey ? fkField.findIndex(el => this.queryInterface.isForeignKey(el)) !== -1 : false,
+                    isForeignKey: this.queryInterface.isForeignKey ? fkField.findIndex(el => this.queryInterface.isForeignKey(el) && el.target_table !== null) !== -1 : false,
                     isPrimaryKey: this.queryInterface.isPrimaryKey ? fkField.findIndex(el => this.queryInterface.isPrimaryKey(el)) !== -1 : false,
                     isUniqueKey: this.queryInterface.isUnique ? fkField.findIndex(el => this.queryInterface.isUnique(el)) !== -1 : false,
                     isSerialKey: this.queryInterface.isSerialKey ? fkField.findIndex(el => this.queryInterface.isSerialKey(el)) !== -1 : false,
-                    foreignKey: fkField.find(el => this.queryInterface.isForeignKey && this.queryInterface.isForeignKey(el)),
+                    foreignKey: fkField.find(el => this.queryInterface.isForeignKey && this.queryInterface.isForeignKey(el)  && el.target_table !== null),
                     serialKey: fkField.find(el => this.queryInterface.isSerialKey && this.queryInterface.isSerialKey(el)),
                     uniqueKey: fkField.find(el => this.queryInterface.isUnique && this.queryInterface.isUnique(el)),
                 };
@@ -297,7 +298,7 @@ export class FerreiroCore {
             return Object.keys(obj);
         });
 
-        Handlebars.registerHelper('camelcase', function (string, pascalCase = true) {
+        Handlebars.registerHelper('camelcase', function (string: any, pascalCase = true) {
             return camelcase(string, { pascalCase: pascalCase === true });
         });
 
@@ -352,7 +353,7 @@ export class FerreiroCore {
         Handlebars.registerHelper('getData', function (prefix, unicalName, sufix) {
 
         });
-        
+
         Handlebars.registerHelper('fileName', function (unicalName) {
             const args: any[] = [...arguments] as any;
             unicalName = unicalName + (args.length > 2 ? args.map((el, index) => {
@@ -421,10 +422,17 @@ export class FerreiroCore {
         console.log(`Loaded ${configFile} config file`);
         console.log(`Loaded ${scriptsFile.length} script file(s)`);
         console.log(`Find ${hbsFiles.length} file(s) in ${this.opts.template} template.`);
+        //writeFileSync('test.json', JSON.stringify(dbData));
         for (const hbsFile of hbsFiles) {
             const str = readFileSync(hbsFile).toString('utf-8');
             try {
                 const template = Handlebars.compile(str);
+               /* console.log(JSON.stringify({
+                    tableData: dbData,
+                    data: enterData,
+                    getId: () => lastUnicalName
+                }))*/
+
                 const templateBuild = template({
                     tableData: dbData,
                     data: enterData,
@@ -451,7 +459,7 @@ export class FerreiroCore {
 
                     genCount++;
 
-                    if(!this.opts.overwriteFile && existsSync(join(destPath, lines[1]))) {
+                    if (!this.opts.overwriteFile && existsSync(join(destPath, lines[1]))) {
                         console.error(`Fail generate ${join(destPath, lines[1])} file already exixts (--overwriteFile is false)`);
                         continue;
                     }
