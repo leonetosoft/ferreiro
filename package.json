@@ -1,6 +1,6 @@
 {
   "name": "ferreiro",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Generate your codes from a postgres or mysql database",
   "main": "index.js",
   "scripts": {
