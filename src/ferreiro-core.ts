@@ -4,12 +4,11 @@ import { SqLiteDialect } from "./dialects/dialect.sqlite";
 import { MySqlDialect } from "./dialects/dialect.mysql";
 import { PostgresDialect } from "./dialects/dialect.postgres";
 import * as _ from 'lodash';
-import { readdirSync, lstatSync, readFileSync, writeFileSync, existsSync } from 'fs';
+import { readdirSync, lstatSync, readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import { join, dirname } from 'path';
 import * as Handlebars from 'handlebars';
 import * as camelcase from 'camelcase';
 import { getAbsolutePath } from "./util";
-import * as mkdirp from 'mkdirp';
 
 export interface Options {
     host: string,
@@ -432,15 +431,12 @@ export class FerreiroCore {
                     data: enterData,
                     getId: () => lastUnicalName
                 }))*/
-
                 const templateBuild = template({
                     tableData: dbData,
                     data: enterData,
                     getId: () => lastUnicalName
                 });
-
                 const beginFiles = templateBuild.split('#begin_file');
-
                 for (const templateStr of beginFiles) {
                     if (templateStr === '') {
                         continue;
@@ -450,11 +446,11 @@ export class FerreiroCore {
                         getAbsolutePath(dirname(hbsFile), this.opts.template));
 
                     if (!existsSync(destPath)) {
-                        mkdirp.sync(destPath);
+                        mkdirSync(destPath, { recursive: true });
                     }
 
                     if (lines[1].indexOf(`/`) !== -1 && !existsSync(join(destPath, dirname(lines[1])))) {
-                        mkdirp.sync(join(destPath, dirname(lines[1])));
+                        mkdirSync(join(destPath, dirname(lines[1])), { recursive: true });
                     }
 
                     genCount++;
@@ -463,9 +459,8 @@ export class FerreiroCore {
                         console.error(`Fail generate ${join(destPath, lines[1])} file already exixts (--overwriteFile is false)`);
                         continue;
                     }
-
                     writeFileSync(
-                        join(destPath, lines[1]),
+                        join(destPath, lines[1].replace(/(\r\n|\n|\r)/gm, "")),
                         this.generateEsModules(filesImports[lines[1]]) +
                         lines.reduce((prev, curr, index) => {
                             if (index > 1) {
@@ -473,7 +468,10 @@ export class FerreiroCore {
                             } else {
                                 return "";
                             }
-                        }, ''), 'utf-8');
+                        }, ''), {
+                            encoding: 'utf-8',
+                            flag: 'w'
+                        });
                 }
             } catch (error) {
                 console.error(`Error to compile template ${hbsFile}`);
